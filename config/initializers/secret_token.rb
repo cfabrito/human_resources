@@ -1,12 +1,16 @@
-# Be sure to restart your server when you modify this file.
+require 'securerandom'
 
-# Your secret key is used for verifying the integrity of signed cookies.
-# If you change this key, all old signed cookies will become invalid!
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
 
-# Make sure the secret is at least 30 characters and all random,
-# no regular words or you'll be exposed to dictionary attacks.
-# You can use `rake secret` to generate a secure secret key.
-
-# Make sure your secret_key_base is kept private
-# if you're sharing your code publicly.
-HumanResources::Application.config.secret_key_base = 'aeaaf1d121225868fa42d4ec173bdf006ea96005480b819694e6ee1b81cf80df1b34803bb12aba0fc80ed52489793943b33fd9256f90b473abee46a49a9031ef'
+SampleApp::Application.config.secret_key_base = secure_token
