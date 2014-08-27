@@ -1,0 +1,35 @@
+<%= form_for :person, url: people_path do |f| %>
+  <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </p>
+  
+  <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </p>  
+   
+  <p>
+    <%= f.label :phone_number %><br>
+    <%= f.telephone_field :phone_number %>
+  </p>
+  
+  <p>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </p>
+  
+  <p>
+    <%= f.label :date_of_birth %><br>
+    <%= f.date_field :date_of_birth %>
+  </p>
+  
+  <p>
+    <%= f.label :linkedin_url %><br>
+    <%= f.url_field :linkedin_url %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
