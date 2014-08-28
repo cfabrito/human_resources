@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
-#ruby-gemset=railstutorial_rails_4_0
+#ruby-gemset=ruby212rails400
 
 gem 'rails', '4.0.8'
 

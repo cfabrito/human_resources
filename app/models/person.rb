@@ -1,7 +1,7 @@
 class Person < ActiveRecord::Base
   validates :first_name,  presence: true, length: { maximum: 20 }
   validates :last_name, presence: true, length: { maximum: 20 }
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, numericality: true
   validates :email, presence: true, format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/ },
                     uniqueness: { case_sensitive: false }
   validates :birth_date, presence: true

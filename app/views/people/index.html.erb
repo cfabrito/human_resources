@@ -2,6 +2,10 @@
  
 <ul>
   <% @people.each do |person| %>
-    <li> <%= link_to person.name, person_path(person) %> </li>
+    <li>
+      <%= link_to person.name, person_path(person) %>
+      <%= link_to 'Edit', edit_person_path(person) %>
+      <%= link_to 'Destroy', person_path(person), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
   <% end %>
 </ul>
