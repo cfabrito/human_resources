@@ -1,26 +1,45 @@
 require 'spec_helper'
 
 describe Person do
-  it "has a valid factory" do
-    FactoryGirl.create(:person).should be_valid
+  before do
+    @person = FactoryGirl.build(:person)
   end
-  it "is invalid without a firstname" do
-    FactoryGirl.build(:person, first_name: nil).should_not be_valid
+  
+  subject { @person }
+  
+  describe "when created" do
+    it { should be_valid }
   end
-  it "is invalid without a lastname" do
-    FactoryGirl.build(:person, last_name: nil).should_not be_valid
+  
+  it { should respond_to(:first_name) }
+  it { should respond_to(:last_name) }
+  it { should respond_to(:email) }
+  it { should respond_to(:phone_number) }
+  it { should respond_to(:birth_date) }
+  it { should respond_to(:linkedin_url) }
+  
+  # Simple validity tests
+  describe "when first name  not present" do
+    before { @person.first_name = " " }
+    it { should_not be_valid }
   end
-  it "is invalid without a phone number" do
-    FactoryGirl.build(:person, phone_number: nil).should_not be_valid
+  
+  describe "when last name  not present" do
+    before { @person.last_name = " " }
+    it { should_not be_valid }
   end
-  it "is invalid without an email" do
-    FactoryGirl.build(:person, email: nil).should_not be_valid
+  
+  describe "when phone number not present" do
+    before { @person.phone_number = " " }
+    it { should_not be_valid }
   end
-  it "is invalid without a birthdate" do
-    FactoryGirl.build(:person, birth_date: nil).should_not be_valid
+  
+  describe "when email not present" do
+    before { @person.email = " " }
+    it { should_not be_valid }
   end
-  it "returns a person's full name as a string" do
-    person = FactoryGirl.build(:person, first_name: "John", last_name: "Doe")
-    person.name.should == "John Doe"
+  describe "when birth date not present" do
+    before { @person.birth_date = " " }
+    it { should_not be_valid }
   end
 end
