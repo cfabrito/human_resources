@@ -137,5 +137,10 @@ describe PeopleController do
         delete :destroy, id: @person
       }.to change(Person, :count).by(-1) and Person.find_by(id: @person.id).should eq nil
     end
+    
+    it "redirects to index" do
+      delete :destroy, id: @person
+      response.should redirect_to people_path
+    end
   end
 end
