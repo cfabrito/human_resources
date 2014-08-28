@@ -8,7 +8,7 @@ class Person < ActiveRecord::Base
   
   # validates :linkedin_url, presence: true
 
-  def full_name
+  def name
     return "#{first_name} #{last_name}"
   end
 end
