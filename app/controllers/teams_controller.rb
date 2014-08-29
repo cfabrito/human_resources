@@ -43,7 +43,7 @@ class TeamsController < ApplicationController
     redirect_to teams_path
   end
   
-  def add_people
+  def change_people
     @team = Team.find(params[:id])
     @members = @team.people
     @people = Person.where.not(:id => @team.person_ids);
@@ -55,7 +55,7 @@ class TeamsController < ApplicationController
     @person = Person.find(params[:person_id])
     @team.people << @person
     
-    redirect_to :add_people_team
+    redirect_to :change_people_team
   end
   
   def remove_person
@@ -63,7 +63,7 @@ class TeamsController < ApplicationController
     @person = Person.find(params[:person_id])
     @team.people.delete(@person)
     
-    redirect_to :add_people_team
+    redirect_to :change_people_team
   end
   
   private
