@@ -1,4 +1,6 @@
 class Person < ActiveRecord::Base
+  has_and_belongs_to_many :teams
+  
   validates :first_name,  presence: true, length: { maximum: 20 }
   validates :last_name, presence: true, length: { maximum: 20 }
   validates :phone_number, presence: true, numericality: true

@@ -1,3 +1,3 @@
 HumanResources::Application.routes.draw do
-  resources :people
+  resources :people, :teams
 end
