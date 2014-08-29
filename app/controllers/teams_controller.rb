@@ -5,7 +5,6 @@ class TeamsController < ApplicationController
   
   def new
     @team = Team.new
-    @people = Person.all.map { |p| [p.name, p.id] }
   end
   
   def create
@@ -20,7 +19,7 @@ class TeamsController < ApplicationController
   
   def update
     @team = Team.find(params[:id])
- 
+    
     if @team.update(team_params)
       redirect_to @team
     else
@@ -34,6 +33,7 @@ class TeamsController < ApplicationController
   
   def show
     @team = Team.find(params[:id])
+    @members = @team.people
   end
   
   def destroy
@@ -41,6 +41,29 @@ class TeamsController < ApplicationController
     @team.destroy
  
     redirect_to teams_path
+  end
+  
+  def add_people
+    @team = Team.find(params[:id])
+    @members = @team.people
+    @people = Person.where.not(:id => @team.person_ids);
+    
+  end
+  
+  def add_person
+    @team = Team.find(params[:id])
+    @person = Person.find(params[:person_id])
+    @team.people << @person
+    
+    redirect_to :add_people_team
+  end
+  
+  def remove_person
+    @team = Team.find(params[:id])
+    @person = Person.find(params[:person_id])
+    @team.people.delete(@person)
+    
+    redirect_to :add_people_team
   end
   
   private

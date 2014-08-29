@@ -34,13 +34,6 @@ function removeTeamMember(id, name)
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </p>
-  
-  <p>
-    <%= select_tag(:person_id, options_for_select(@people)) %>
-    <br/>
-    <input type="button" value="Add" onclick="addTeamMember()">
-    <ul id="current_members"></ul>
-  </p>
  
   <p>
     <%= f.submit %>

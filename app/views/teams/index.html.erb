@@ -4,7 +4,8 @@
   <% @teams.each do |team| %>
     <li>
       <%= link_to team.name, team_path(team) %>
-      <%= link_to 'Edit', edit_team_path(team) %>
+      <%= link_to 'Edit Name', edit_team_path(team) %>
+      <%= link_to 'Add Members', add_people_team_path(team) %>
       <%= link_to 'Destroy', team_path(team), method: :delete, data: { confirm: 'Are you sure?' } %>
     </li>
   <% end %>
