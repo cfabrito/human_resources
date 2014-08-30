@@ -45,7 +45,6 @@ class TeamsController < ApplicationController
   
   def change_people
     @team = Team.find(params[:id])
-    @members = @team.people
     @people = Person.where.not(:id => @team.person_ids);
     
   end
