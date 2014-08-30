@@ -1,5 +1,6 @@
 class Team < ActiveRecord::Base
-  has_and_belongs_to_many :people
+  has_many :team_memberships
+  has_many :people, through: :team_memberships
   
   validates :name, presence: true
 end

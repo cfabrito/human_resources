@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140828192452) do
+ActiveRecord::Schema.define(version: 20140830195011) do
 
   create_table "people", force: true do |t|
     t.string   "first_name"
@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(version: 20140828192452) do
     t.datetime "updated_at"
   end
 
-  create_table "people_teams", id: false, force: true do |t|
-    t.integer "person_id", null: false
-    t.integer "team_id",   null: false
+  create_table "team_memberships", force: true do |t|
+    t.integer  "team_id"
+    t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "people_teams", ["person_id", "team_id"], name: "index_people_teams_on_person_id_and_team_id"
 
   create_table "teams", force: true do |t|
     t.string   "name"
