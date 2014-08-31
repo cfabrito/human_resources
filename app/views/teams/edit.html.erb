@@ -1,3 +1,9 @@
+<% provide(:title, "Editing \"#{@team.name}") %>
 <h1> Editing team </h1>
 
 <%= render 'form' %>
+
+<ul class="list-inline">
+  <li><%= link_to "Back to Show", team_path(@team) %></li>
+  <li><%= link_to "Back to List",  teams_path %></li>
+</ul>

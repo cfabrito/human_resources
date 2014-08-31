@@ -1,12 +1,9 @@
-<h1>Listing teams</h1>
- 
-<ul>
+<% provide(:title, 'Team Listing') %>
+<h1>Team Listing</h1>
+<h2>Click for details</h2>
+ <%= link_to "Add new entry", new_person_path %>
+<div class="list-group" style="width:30%">
   <% @teams.each do |team| %>
-    <li>
-      <%= link_to team.name, team_path(team) %>
-      <%= link_to 'Edit Name', edit_team_path(team) %>
-      <%= link_to 'Add Members', change_people_team_path(team) %>
-      <%= link_to 'Destroy', team_path(team), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
+    <%= link_to team.name, team_path(team), class: "list-group-item" %>
   <% end %>
 </ul>

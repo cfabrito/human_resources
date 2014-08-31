@@ -1,1 +1,7 @@
+<% provide(:title, 'New Person') %>
+<h1> New Person </h1>
+<h2> Add a new Person entry </h2>
 <%= render 'form' %>
+<ul class="list-inline">
+  <li><%= link_to "Back to List", people_path %></li>
+</ul>
