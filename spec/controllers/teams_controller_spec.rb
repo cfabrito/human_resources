@@ -96,12 +96,12 @@ describe TeamsController do
     
     it "removes an entry from the join database" do
       expect { 
-          delete :add_person, id: @team.id, person_id: @person.id
-      }.to change(@team.people, :count).by(1)
+          delete :remove_person, id: @team.id, person_id: @person.id
+      }.to change(@team.people, :count).by(-1)
     end
     
     it "redirects to team#change_people" do
-      delete :add_person, id: @team.id, person_id: @person.id
+      delete :remove_person, id: @team.id, person_id: @person.id
       response.should redirect_to :change_people_team
     end
   end

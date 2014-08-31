@@ -11,3 +11,7 @@ require 'factory_girl_rails'
 10.times do
   FactoryGirl.create(:person)
 end
+
+10.times do
+  FactoryGirl.create(:team)
+end

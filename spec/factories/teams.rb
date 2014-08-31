@@ -3,7 +3,7 @@
 FactoryGirl.define do
   # Empty team
   factory :team do
-    name { Faker::Team.creature }
+    name { Faker::Company.name }
     
     trait :with_people do
       ignore do
