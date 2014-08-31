@@ -1,4 +1,5 @@
 HumanResources::Application.routes.draw do
+  root 'static_pages#index', as: :home
   resources :people 
     
   resources :teams do
