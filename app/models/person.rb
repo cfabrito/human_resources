@@ -1,4 +1,7 @@
 class Person < ActiveRecord::Base
+  has_many :team_memberships
+  has_many :teams, through: :team_memberships
+  
   validates :first_name,  presence: true, length: { maximum: 20 }
   validates :last_name, presence: true, length: { maximum: 20 }
   validates :phone_number, presence: true, numericality: true
@@ -8,7 +11,7 @@ class Person < ActiveRecord::Base
   
   # validates :linkedin_url, presence: true
 
-  def full_name
+  def name
     return "#{first_name} #{last_name}"
   end
 end

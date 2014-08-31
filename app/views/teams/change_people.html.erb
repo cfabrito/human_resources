@@ -1,0 +1,21 @@
+<h1> Adding members to team "<%= @team.name %>"</h1>
+<h2>Current members are:</h2>
+<ul>
+    <% @team.people.each do |member| %>
+      <li>
+        <%= link_to member.name, person_path(member) %>
+        <%= link_to 'Remove', remove_person_team_url(@team.id, member.id), method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+<p>
+<h2>Available members are:</h2
+  <ul>
+    <% @people.each do |person| %>
+      <li>
+        <%= link_to person.name, person_path(person) %>
+        <%= link_to 'Add', add_person_team_url(@team.id, person.id), method: :post %>
+      </li>
+    <% end %>
+  </ul>
+</p>

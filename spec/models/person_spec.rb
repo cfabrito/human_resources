@@ -19,12 +19,12 @@ describe Person do
   it { should respond_to(:linkedin_url) }
   
   # Simple validity tests
-  describe "when first name  not present" do
+  describe "when first name not present" do
     before { @person.first_name = " " }
     it { should_not be_valid }
   end
   
-  describe "when last name  not present" do
+  describe "when last name not present" do
     before { @person.last_name = " " }
     it { should_not be_valid }
   end

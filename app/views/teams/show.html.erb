@@ -1,0 +1,12 @@
+<h1>Showing Team</h1>
+
+<p>
+  Name<br/>
+  <%= @team.name %>
+  <ul>
+    <% @members.each do |member| %>
+    <li> <%= member.name %> </li>
+    <% end %>
+  </ul>
+  <%= link_to 'Change Members', change_people_team_path(@team) %>
+</p>

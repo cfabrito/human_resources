@@ -1,16 +1,16 @@
 require 'spec_helper'
 
 describe PeopleController do
-  describe "GET #index" do
+  describe "GET people#index" do
     before do
       @person = FactoryGirl.create(:person)
     end
-    it "populates an array of people" do
+    it "populates an array of people, @people" do
       get :index
       assigns(:people).should eq([@person]);
     end
     
-    it "renders the :index view" do
+    it "renders the people#index template" do
       get :index
       response.should render_template :index
     end
@@ -23,13 +23,13 @@ describe PeopleController do
       assigns(:person).should eq(person)
     end
     
-    it "renders the #show view" do
+    it "renders the people#show template" do
       get :show, id: FactoryGirl.create(:person)
       response.should render_template(:show)
     end
   end
   
-  describe "GET #new" do
+  describe "GET people#new" do
     it "creates a new person entry" do
       get :new
       assigns(:person).should be_a_new(Person)
@@ -39,7 +39,7 @@ describe PeopleController do
   describe "GET people#edit" do
     it "assigns the requested person to @person" do
       person = FactoryGirl.create(:person)
-      get :show, id: person
+      get :edit, id: person
       assigns(:person).should eq(person)
     end
   end
@@ -50,12 +50,12 @@ describe PeopleController do
         @valid_attributes = FactoryGirl.attributes_for(:person)
       end
       
-      it "creates a new contact"do
+      it "creates a new person" do
         expect { 
           post :create, person: @valid_attributes
         }.to change(Person, :count).by(1)
       end
-      it "redirects to GET people#show new entry" do
+      it "redirects to GET people#show of the new entry" do
         post :create, person: @valid_attributes
         response.should redirect_to Person.last
       end

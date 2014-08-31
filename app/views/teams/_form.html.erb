@@ -1,0 +1,41 @@
+<script>
+function addTeamMember()
+{
+  var selectBox = $( "#person_id option:selected" );
+
+  var memberId = selectBox.val();
+  var memberName = selectBox.text();
+  var button = '<input type="button" value="Remove" onClick="removeTeamMember('+memberId+',\''+memberName+'\')"/>'
+  
+  $('#person_id option[value=\''+memberId+'\']').remove();
+  $('#current_members').append('<li>'+memberName+button+'</li>');
+}
+
+function removeTeamMember(id, name)
+{
+  $('#current_members li:contains(\''+name+'\')').remove();
+  $( "#person_id" ).append( new Option(name, id) );
+}
+</script>
+<%= form_for @team do |f| %>
+  <% if @team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@team.errors.count, "error") %> prevented
+      this team from being recorded:</h2>
+      <ul>
+        <% @team.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= hidden_field_tag :team_members %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
