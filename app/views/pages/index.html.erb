@@ -1,0 +1,22 @@
+<div class="center hero-unit">
+  <h1>Welcome to Human Resources</h1>
+
+  <h2 class="center">
+    To start managing your teams click on the top-left links
+  </h2>
+</div>
+  
+<h3>Teams</h3>
+<h2>Click to display members</h2>
+<div class="list-group" style="width:30%">
+  <% @teams.each do |team| %>
+    <a class="list-group-item" data-toggle="collapse" data-target="#team<%=team.id%>">
+      <%= team.name %>
+    </a>
+    <ul class="nav nav-list collapse" id="team<%=team.id%>">
+      <% team.people.each do |member| %>
+        <li><%= link_to member.name, person_path(member) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

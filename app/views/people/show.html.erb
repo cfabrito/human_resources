@@ -20,6 +20,14 @@
     
   <dt>LinkedIn</dt>
     <dd><%= @person.linkedin_url %></dd>
+  <dt>Belongs to teams: </dt>
+    <dd>
+      <ul class="list-unstyled">
+        <% @person.teams.each do |team| %>
+        <li> <%= link_to team.name, team_path(team) %> </li>
+        <% end %>
+      </ul>
+    </dd>
 </dl>
 <ul class="list-inline">
   <li><%= link_to "Back to List", people_path %></li>
