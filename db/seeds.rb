@@ -17,8 +17,8 @@ Person.create(first_name: "Margarete", last_name: "Hackett", phone_number: "0262
 Person.create(first_name: "Dameon", last_name: "McCullough", phone_number: "275383601", email: "kaylee@raynor.name", birth_date: "1988-08-22",linkedin_url: "http://linkedin.com/mikel")
 Person.create(first_name: "Green", last_name: "Kassulke", phone_number: "024472324", email: "dana@bruenjacobi.biz", birth_date: "1982-10-31",linkedin_url: "http://linkedin.com/deshaun_bradtke")
 
-Team.create(team_name: "Mills-Torphy")
-Team.create(team_name: "Huel-Gibson")
-Team.create(team_name: "Schneider LLC")
-Team.create(team_name: "Keebler-Spencer")
-Team.create(team_name: "Dietrich Group")
+Team.create(name: "Mills-Torphy")
+Team.create(name: "Huel-Gibson")
+Team.create(name: "Schneider LLC")
+Team.create(name: "Keebler-Spencer")
+Team.create(name: "Dietrich Group")
