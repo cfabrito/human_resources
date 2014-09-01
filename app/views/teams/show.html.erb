@@ -15,7 +15,7 @@
   </dd>
 </dl>
 <ul class="list-inline">
-  <li><%= link_to "Back to List", people_path %></li>
+  <li><%= link_to "Back to List", teams_path %></li>
   <li><%= link_to "Edit Fields",  edit_team_path(@team) %></li>
   <li><%= link_to 'Change Members', change_people_team_path(@team) %></li>
   <li><%= link_to "Delete", team_path(@team), method: :delete, data: { confirm: 'Are you sure?' } %></li>
