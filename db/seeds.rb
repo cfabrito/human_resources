@@ -6,8 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'factory_girl_rails'
-
 Person.create(first_name: "Brady", last_name: "Bogisich", phone_number: "078747184", email: "ulices@lueilwitzfritsch.org", birth_date: "1951-04-25",linkedin_url: "http://linkedin.com/derick")
 Person.create(first_name: "Mustafa", last_name: "Bahringer", phone_number: "782425361", email: "roscoe@koelpin.name", birth_date: "1967-10-27",linkedin_url: "http://linkedin.com/emmalee_kuvalis")
 Person.create(first_name: "Kayleigh", last_name: "O'Connell", phone_number: "455057357", email: "seth.krajcik@deckow.name", birth_date: "1970-11-23",linkedin_url: "http://linkedin.com/lorine")
