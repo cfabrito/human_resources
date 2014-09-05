@@ -9,6 +9,9 @@
 /log/*.log
 /tmp
 
+# Ignore coverage results
+/coverage
+
 # Ignore other unneeded files.
 database.yml
 doc/
