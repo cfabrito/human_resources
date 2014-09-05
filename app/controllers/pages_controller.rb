@@ -1,13 +1,11 @@
 class PagesController < ApplicationController
+  def index
+    @teams = Team.all.includes(:people)
+  end
 
-def index
-  @teams = Team.all
-end
+  def about
+  end
 
-def about
-end
-
-def contact
-end
-
+  def contact
+  end
 end

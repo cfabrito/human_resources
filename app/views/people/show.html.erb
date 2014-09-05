@@ -5,19 +5,19 @@
 <dl class="dl-horizontal">
     <dt>Fist Name</dt>
   <dd><%= @person.first_name %></dd>
-      
+
     <dt>Last Name</dt>
   <dd><%= @person.last_name %></dd>
-      
+
     <dt>Phone Number</dt>
   <dd><%= @person.phone_number %></dd>
-      
+
     <dt>Email Address</dt>
   <dd><%= @person.email %></dd>
-      
+
     <dt>Date of Birth</dt>
   <dd><%= @person.birth_date %></dd>
-    
+
   <dt>LinkedIn</dt>
     <dd><%= @person.linkedin_url %></dd>
   <dt>Belongs to teams: </dt>
@@ -30,7 +30,8 @@
     </dd>
 </dl>
 <ul class="list-inline">
-  <li><%= link_to "Back to List", people_path %></li>
-  <li><%= link_to "Edit Fields",  edit_person_path(@person) %></li>
-  <li><%= link_to "Delete", person_path(@person), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  <li><%= link_to 'Back to List', people_path %></li>
+  <li><%= link_to 'Edit Fields',  edit_person_path(@person) %></li>
+  <li><%= link_to 'Change Teams', change_teams_person_path(@person) %></li>
+  <li><%= link_to 'Delete', person_path(@person), method: :delete, data: { confirm: 'Are you sure?' } %></li>
 </ul>
