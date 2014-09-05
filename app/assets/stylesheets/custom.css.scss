@@ -69,3 +69,10 @@ footer ul li {
   float: left;
   margin-left: 10px;
 }
+
+/* Description list truncation */
+
+.dl-horizontal dt
+{
+    white-space: normal;
+}
