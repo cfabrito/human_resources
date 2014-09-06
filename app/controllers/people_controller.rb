@@ -1,8 +1,8 @@
-class PeopleController < ApplicationController
+class PeopleController < OwnershipController
   include ChangeTeamMembers
 
   def index
-    @people = Person.all
+    @people = current_user.people
   end
 
   def new
@@ -13,7 +13,7 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
 
     if @person.save
-      redirect_to @person
+      redirect_to [current_user, @person]
     else
       render :new
     end
@@ -23,7 +23,7 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
 
     if @person.update(person_params)
-      redirect_to @person
+      redirect_to [current_user, @person]
     else
       render :edit
     end
@@ -41,7 +41,7 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
     @person.destroy
 
-    redirect_to people_path
+    redirect_to user_people_path
   end
 
   def change_teams
@@ -52,17 +52,17 @@ class PeopleController < ApplicationController
   def add_to_team
     add_team_member(params[:team_id], params[:id])
 
-    redirect_to :change_teams_person
+    redirect_to :change_teams_user_person
   end
 
   def remove_from_team
     remove_team_member(params[:team_id], params[:id])
 
-    redirect_to :change_teams_person
+    redirect_to :change_teams_user_person
   end
 
   private
     def person_params
-      params.require(:person).permit(:first_name, :last_name, :phone_number, :email, :birth_date, :linkedin_url)
+      params.require(:person).permit(:first_name, :last_name, :phone_number, :email, :birth_date, :linkedin_url).merge(user_id: current_user.id)
     end
 end

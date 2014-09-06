@@ -2,11 +2,16 @@
   <h1>Welcome to Human Resources</h1>
 
   <h2 class="center">
-    To start managing your teams click on the top-left links
+    <% if user_signed_in? %>
+      To start managing your teams click on the top-left links
+    <% else %>
+      To start using this application please <%= link_to 'Log in', new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %>.
+    <% end %>
   </h2>
 </div>
-  
-<h3>Teams</h3>
+
+<% if user_signed_in? %>
+<h3>Your Teams</h3>
 <h2>Click to display members</h2>
 <div class="list-group" style="width:30%">
   <% @teams.each do |team| %>
@@ -15,8 +20,9 @@
     </a>
     <ul class="nav nav-list collapse" id="team<%=team.id%>">
       <% team.people.each do |member| %>
-        <li><%= link_to member.name, person_path(member) %></li>
+        <li><%= link_to member.name, user_person_path(current_user, member) %></li>
       <% end %>
     </ul>
   <% end %>
 </div>
+<% end %>

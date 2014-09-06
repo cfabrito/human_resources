@@ -5,6 +5,6 @@
 <%= render 'form' %>
 
 <ul class="list-inline">
-  <li><%= link_to "Back to Show", person_path(@person) %></li>
-  <li><%= link_to "Back to List", people_path %></li>
+  <li><%= link_to "Back to Show", user_person_path(current_user, @person) %></li>
+  <li><%= link_to "Back to List", user_people_path %></li>
 </ul>

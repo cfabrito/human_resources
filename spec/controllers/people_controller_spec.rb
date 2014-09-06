@@ -1,17 +1,19 @@
 require 'spec_helper'
 
 describe PeopleController do
+  login_user
+
   describe 'GET people#index' do
     before do
-      @person = FactoryGirl.create(:person)
+      @person = FactoryGirl.create(:person, user_id: @user_id)
     end
     it 'populates an array of people, @people' do
-      get :index
+      get :index, user_id: @user_id
       assigns(:people).should eq([@person]);
     end
 
     it 'renders the people#index template' do
-      get :index
+      get :index, user_id: @user_id
       response.should render_template :index
     end
   end

@@ -1,8 +1,8 @@
-class TeamsController < ApplicationController
+class TeamsController < OwnershipController
   include ChangeTeamMembers
 
   def index
-    @teams = Team.all
+    @teams = current_user.teams
   end
 
   def new
@@ -11,9 +11,10 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
+    @team.user_id = current_user.id
 
     if @team.save
-      redirect_to @team
+      redirect_to [current_user, @team]
     else
       render :new
     end
@@ -23,7 +24,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
 
     if @team.update(team_params)
-      redirect_to @team
+      redirect_to [current_user, @team]
     else
       render :edit
     end
@@ -64,6 +65,6 @@ class TeamsController < ApplicationController
 
   private
     def team_params
-      params.require(:team).permit(:name)
+      params.require(:team).permit(:name).merge(user_id: current_user.id)
     end
 end

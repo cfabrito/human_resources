@@ -4,21 +4,21 @@
 <h3>Currently belongs to:</h3>
 <dl class="dl-horizontal">
     <% @person.teams.each do |team| %>
-      <dt><%= link_to team.name, team_path(team) %></dt>
-      <dd><%= link_to 'Remove', remove_from_team_person_url(@person.id, team.id), method: :delete %></dd>
+      <dt><%= link_to team.name, user_team_path(current_user, team) %></dt>
+      <dd><%= link_to 'Remove', remove_from_team_user_person_path(current_user, @person.id, team.id), method: :delete %></dd>
     <% end %>
   </dl>
 <p>
 <h3>Available teams are:</h3>
   <dl class="dl-horizontal">
     <% @teams.each do |team| %>
-      <dt><%= link_to team.name, person_path(@person) %></dt>
-      <dd><%= link_to 'Add', add_to_team_person_url(@person.id, team.id), method: :post %></dd>
+      <dt><%= link_to team.name, user_team_path(current_user, team) %></dt>
+      <dd><%= link_to 'Add', add_to_team_user_person_path(current_user, @person.id, team), method: :post %></dd>
     <% end %>
   </dl>
 </p>
 
 <ul class="list-inline">
-  <li><%= link_to "Back to Show", person_path(@person) %></li>
-  <li><%= link_to "Back to List",  people_path %></li>
+  <li><%= link_to "Back to Show", user_person_path(current_user, @person) %></li>
+  <li><%= link_to "Back to List", user_people_path %></li>
 </ul>
