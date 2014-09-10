@@ -2,51 +2,59 @@ class PeopleController < OwnershipController
   include ChangeTeamMembers
 
   def index
-    @people = current_user.people
+    @user = User.find(params[:user_id])
+    @people = @user.people
   end
 
   def new
+    @user = User.find(params[:user_id])
     @person = Person.new
   end
 
   def create
+    @user = User.find(params[:user_id])
     @person = Person.new(person_params)
 
     if @person.save
-      redirect_to [current_user, @person]
+      redirect_to [@user, @person]
     else
       render :new
     end
   end
 
   def update
-    @person = Person.find(params[:id])
+    @user = User.find(params[:user_id])
+    @person = @user.people.find(params[:id])
 
     if @person.update(person_params)
-      redirect_to [current_user, @person]
+      redirect_to [@user, @person]
     else
       render :edit
     end
   end
 
   def edit
-    @person = Person.find(params[:id])
+    @user = User.find(params[:user_id])
+    @person = @user.people.find(params[:id])
   end
 
   def show
-    @person = Person.find(params[:id])
+    @user = User.find(params[:user_id])
+    @person = @user.people.find(params[:id])
   end
 
   def destroy
-    @person = Person.find(params[:id])
+    @user = User.find(params[:user_id])
+    @person = @user.people.find(params[:id])
     @person.destroy
 
     redirect_to user_people_path
   end
 
   def change_teams
-    @person = Person.find(params[:id])
-    @teams = Team.where.not(id: @person.team_ids);
+    @user = User.find(params[:user_id])
+    @person = @user.people.find(params[:id])
+    @teams = @user.teams.where.not(id: @person.team_ids);
   end
 
   def add_to_team

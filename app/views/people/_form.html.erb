@@ -1,4 +1,4 @@
-<%= form_for [current_user, @person] do |f| %>
+<%= form_for [@user, @person] do |f| %>
   <% if @person.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@person.errors.count, "error") %> prevented

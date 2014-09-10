@@ -1,9 +1,9 @@
 <% provide(:title, 'Team Listing') %>
 <h1>Team Listing</h1>
 <h2>Click for details</h2>
-<%= link_to "Add new entry", new_user_team_path(current_user) %>
+<%= link_to "Add new entry", new_user_team_path(@user) %>
 <div class="list-group" style="width:30%">
   <% @teams.each do |team| %>
-    <%= link_to team.name, user_team_path(current_user, team), class: "list-group-item" %>
+    <%= link_to team.name, user_team_path(@user, team), class: "list-group-item" %>
   <% end %>
 </div>

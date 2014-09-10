@@ -4,21 +4,21 @@
 <h3>Current members are:</h3>
 <dl class="dl-horizontal">
     <% @team.people.each do |member| %>
-      <dt><%= link_to member.name, user_person_path(current_user, member) %></dt>
-      <dd><%= link_to 'Remove', remove_person_user_team_url(current_user, @team.id, member.id), method: :delete %></dd>
+      <dt><%= link_to member.name, user_person_path(@user, member) %></dt>
+      <dd><%= link_to 'Remove', remove_person_user_team_url(@user, @team.id, member.id), method: :delete %></dd>
     <% end %>
   </dl>
 <p>
 <h3>Available members are:</h3>
   <dl class="dl-horizontal">
     <% @people.each do |person| %>
-      <dt><%= link_to person.name, user_person_path(person) %></dt>
-      <dd><%= link_to 'Add', add_person_user_team_url(current_user, @team.id, person.id), method: :post %></dd>
+      <dt><%= link_to person.name, user_person_path(@user, person) %></dt>
+      <dd><%= link_to 'Add', add_person_user_team_url(@user, @team.id, person.id), method: :post %></dd>
     <% end %>
   </dl>
 </p>
 
 <ul class="list-inline">
-  <li><%= link_to "Back to Show", user_team_path(current_user, @team) %></li>
-  <li><%= link_to "Back to List",  user_teams_path(current_user) %></li>
+  <li><%= link_to "Back to Show", user_team_path(@user, @team) %></li>
+  <li><%= link_to "Back to List",  user_teams_path(@user) %></li>
 </ul>

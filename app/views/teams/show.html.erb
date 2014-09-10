@@ -9,14 +9,14 @@
   <dd>
     <ul class="list-unstyled">
       <% @members.each do |member| %>
-      <li> <%= link_to member.name, user_person_path(current_user, member) %> </li>
+      <li> <%= link_to member.name, user_person_path(@user, member) %> </li>
       <% end %>
     </ul>
   </dd>
 </dl>
 <ul class="list-inline">
-  <li><%= link_to "Back to List", user_teams_path(current_user) %></li>
-  <li><%= link_to "Edit Fields",  edit_user_team_path(current_user, @team) %></li>
-  <li><%= link_to 'Change Members', change_people_user_team_path(current_user, @team) %></li>
-  <li><%= link_to "Delete", user_team_path(current_user, @team), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  <li><%= link_to "Back to List", user_teams_path(@user) %></li>
+  <li><%= link_to "Edit Fields",  edit_user_team_path(@user, @team) %></li>
+  <li><%= link_to 'Change Members', change_people_user_team_path(@user, @team) %></li>
+  <li><%= link_to "Delete", user_team_path(@user, @team), method: :delete, data: { confirm: 'Are you sure?' } %></li>
 </ul>
