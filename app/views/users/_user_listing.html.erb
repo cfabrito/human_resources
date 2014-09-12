@@ -1,0 +1,5 @@
+<div class="list-group" style="width:30%">
+  <% @users.each do |user| %>
+    <%= link_to user.email, user_path(user),  class: 'list-group-item' %>
+  <% end %>
+</div>

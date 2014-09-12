@@ -16,6 +16,7 @@
             <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
           <% elsif admin_signed_in? %>
             <li><a href="#">Welcome, administrator</a></li>
+            <li><%= link_to 'Manage Users', users_path %></li>
             <li><%= link_to 'Log out', destroy_admin_session_path, :method => :delete %></li>
           <% else %>
           <li><%= link_to "Log in", new_user_session_path %></li>

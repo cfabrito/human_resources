@@ -8,7 +8,7 @@ HumanResources::Application.routes.draw do
   get "pages/contact"
 
   # Make both people and teams nested resources for users
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index, :show, :destroy] do
 
     resources :people do
       member do
