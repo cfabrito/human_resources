@@ -9,6 +9,7 @@ gem 'sass-rails', '>= 3.2'
 gem 'devise'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'faker'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -19,7 +20,6 @@ end
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
-  gem 'faker'
   gem 'simplecov', :require => false
 end
 
