@@ -49,7 +49,7 @@ class TeamsController < OwnershipController
     @team = @user.teams.find(params[:id])
     @team.destroy
 
-    redirect_to teams_path
+    redirect_to user_teams_path(@user)
   end
 
   def change_people

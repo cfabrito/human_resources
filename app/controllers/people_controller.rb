@@ -48,7 +48,7 @@ class PeopleController < OwnershipController
     @person = @user.people.find(params[:id])
     @person.destroy
 
-    redirect_to user_people_path
+    redirect_to user_people_path(@user)
   end
 
   def change_teams
