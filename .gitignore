@@ -12,6 +12,9 @@
 # Ignore coverage results
 /coverage
 
+# Ignore uploads
+/public/uploads
+
 # Ignore other unneeded files.
 database.yml
 doc/

@@ -1,6 +1,6 @@
 class OwnershipController < ApplicationController
   before_action :require_login
-  before_action -> { require_ownership params[:user_id].to_i if user_signed_in? }
+  before_action -> { require_ownership params[:user_id].to_i unless admin_signed_in? }
 
   private
     def require_login

@@ -4,7 +4,11 @@
       <%= link_to 'Human Resources', home_path, class: "navbar-brand" %>
       <div class="nav navbar-right" >
         <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
+          <% if admin_signed_in? %>
+            <li><a href="#">Welcome, administrator</a></li>
+            <li><%= link_to 'Manage Users', users_path %></li>
+            <li><%= link_to 'Log out', destroy_admin_session_path, :method => :delete %></li>
+          <% elsif user_signed_in? %>
             <li><%= link_to "Welcome, #{current_user.email}", edit_user_registration_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href='#' class="dropdown-toggle" data-toggle="dropdown">Manage</a>
@@ -14,13 +18,9 @@
               </ul>
             </li>
             <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
-          <% elsif admin_signed_in? %>
-            <li><a href="#">Welcome, administrator</a></li>
-            <li><%= link_to 'Manage Users', users_path %></li>
-            <li><%= link_to 'Log out', destroy_admin_session_path, :method => :delete %></li>
           <% else %>
-          <li><%= link_to "Log in", new_user_session_path %></li>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
           <% end %>
         </ul>
       </div>

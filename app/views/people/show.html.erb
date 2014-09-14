@@ -1,5 +1,10 @@
 <% provide(:title, @person.name) %>
 <h1> <%= @person.name %> </h1>
+<% if @person.image.blank? %>
+  <%= image_tag 'image_not_available.jpg', style:'width:150px;height:150px' %>
+<% else %>
+  <img src="<%= @person.image %>" alt="<%= @person.name %>" style="width:150px;height:150px">
+<% end %>
 <h2> Personal Information </h2>
 
 <dl class="dl-horizontal">
@@ -20,6 +25,7 @@
 
   <dt>LinkedIn</dt>
     <dd><%= @person.linkedin_url %></dd>
+
   <dt>Belongs to teams: </dt>
     <dd>
       <ul class="list-unstyled">

@@ -71,6 +71,6 @@ class PeopleController < OwnershipController
 
   private
     def person_params
-      params.require(:person).permit(:first_name, :last_name, :phone_number, :email, :birth_date, :linkedin_url).merge(user_id: current_user.id)
+      params.require(:person).permit(:first_name, :last_name, :phone_number, :email, :birth_date, :linkedin_url, :image).merge(user_id: current_user.id)
     end
 end

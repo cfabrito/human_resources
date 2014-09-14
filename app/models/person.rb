@@ -1,4 +1,6 @@
 class Person < ActiveRecord::Base
+  mount_uploader :image, PersonImageUploader
+
   belongs_to :user
 
   has_many :team_memberships
