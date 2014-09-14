@@ -3,7 +3,7 @@ class PagesController < ApplicationController
     if admin_signed_in?
       @users = User.all
     elsif user_signed_in?
-      @teams = Team.where(id: current_user.id).includes(:people)
+      @teams = Team.where(user_id: current_user.id).includes(:people)
     end
   end
 
